@@ -1,7 +1,8 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/model/json/JSONModel",
-], function (Controller, JSONModel) {
+	"sap/m/MessageBox"
+], function (Controller, JSONModel,MessageBox) {
 	"use strict";
 
 	return Controller.extend("SapOdata.controller.View1", {
@@ -42,10 +43,12 @@ sap.ui.define([
 					debugger;
 					var oBinding = this._oTable.getBinding("items");//Liste güncelleme
 					oBinding.filter([]);//Liste güncelleme
+			   MessageBox.success("Satınalma başarılı bir biçimde oluşturuldu");
 				}.bind(this);
 				
 				sParameters.error = function(oError){
 					debugger;
+					MessageBox.error("Satınalma Hatalıdır.Oluşturma başarısız.!");
 				};
 				
 				oModel.create(sPath,oData,sParameters);
